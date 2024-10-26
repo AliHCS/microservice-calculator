@@ -27,6 +27,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/parity/tsconfig.app.json"
       }
+    },
+    "prime": {
+      "type": "application",
+      "root": "apps/prime",
+      "entryFile": "main",
+      "sourceRoot": "apps/prime/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/prime/tsconfig.app.json"
+      }
     }
   }
 }
