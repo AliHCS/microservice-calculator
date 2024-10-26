@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PrimeController } from './prime.controller';
 import { PrimeService } from './prime.service';
+import { PrimeController } from './prime.controller';
 
 @Module({
-  imports: [],
-  controllers: [PrimeController],
   providers: [PrimeService],
+  controllers: [PrimeController], // Agregamos el controlador aquí
 })
 export class PrimeModule {}

@@ -39,3 +39,16 @@ services:
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
     ports:
       - "3001:3001"
+
+  prime:
+    build:
+      context: .
+      dockerfile: ./apps/prime/Dockerfile
+    container_name: prime
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
+    ports:
+      - "3002:3002"
