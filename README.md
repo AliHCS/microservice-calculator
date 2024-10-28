@@ -14,12 +14,7 @@ Asegúrate de tener los siguientes programas instalados en tu máquina:
 
 ### Paso 1: Descargar el Proyecto
 
-Clona el repositorio y entra al directorio del proyecto:
-
-```bash
-git clone <URL_DEL_REPOSITORIO>
-cd <nombre_del_proyecto>
-```
+Descarga el proyecto con el metodo que deseas
 
 ### Paso 2: Instalar las Dependencias
 
