@@ -21,20 +21,30 @@ export class AppController {
     return result; // Devolvemos el objeto tal como lo recibimos
   }
 
+  @Post('factorial')
+  async checkFactorial(
+    @Body() data: { number: number },
+  ): Promise<{ factorial: number }> {
+    const factorial = await this.appService.calculateFactorial(data.number);
+    return { factorial }; // Devolvemos el objeto tal como lo recibimos
+  }
+
   @Post('calculate')
   async calculate(
     @Body() data: { number: number },
-  ): Promise<{ isPair: boolean; isPrime: boolean }> {
+  ): Promise<{ isPair: boolean; isPrime: boolean; factorial: number }> {
     const { number } = data;
 
-    const [parityResult, primeResult] = await Promise.all([
+    const [parityResult, primeResult, factorial] = await Promise.all([
       this.appService.checkParity(number),
       this.appService.checkPrime(number),
+      this.appService.calculateFactorial(number),
     ]);
 
     return {
       ...parityResult,
       ...primeResult,
+      factorial,
     };
   }
 }

@@ -52,3 +52,16 @@ services:
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
     ports:
       - "3002:3002"
+
+  factorial:
+    build:
+      context: .
+      dockerfile: ./apps/factorial/Dockerfile
+    container_name: factorial
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
+    ports:
+      - "3003:3003"

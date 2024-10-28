@@ -36,6 +36,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/prime/tsconfig.app.json"
       }
+    },
+    "factorial": {
+      "type": "application",
+      "root": "apps/factorial",
+      "entryFile": "main",
+      "sourceRoot": "apps/factorial/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/factorial/tsconfig.app.json"
+      }
     }
   }
 }

@@ -32,6 +32,19 @@ import { AppService } from './app.service';
           },
         },
       },
+      {
+        name: 'FACTORIAL_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: [
+            process.env.RABBITMQ_URL || 'amqp://guest:guest@rabbitmq:5672',
+          ],
+          queue: 'factorial_queue',
+          queueOptions: {
+            durable: false,
+          },
+        },
+      },
     ]),
   ],
   controllers: [AppController],
