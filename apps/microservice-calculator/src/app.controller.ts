@@ -34,12 +34,21 @@ export class AppController {
     const sumN = await this.appService.calculateSumN(data.number);
     return { sumN }; // Devolvemos el resultado en un objeto
   }
+
   @Post('fibonacci')
   async checkFibonacci(
     @Body() data: { number: number },
   ): Promise<{ fibonacci: number }> {
     const fibonacci = await this.appService.calculateFibonacci(data.number);
     return { fibonacci }; // Devolvemos el resultado en un objeto
+  }
+
+  @Post('factors')
+  async checkFactors(
+    @Body() data: { number: number },
+  ): Promise<{ factors: number[] }> {
+    const factors = await this.appService.calculateFactors(data.number);
+    return { factors }; // Devolvemos el resultado en un objeto
   }
 
   @Post('calculate')
@@ -49,16 +58,18 @@ export class AppController {
     factorial: number;
     sumN: number;
     fibonacci: number;
+    factors: number[];
   }> {
     const { number } = data;
 
-    const [parityResult, primeResult, factorial, sumN, fibonacci] =
+    const [parityResult, primeResult, factorial, sumN, fibonacci, factors] =
       await Promise.all([
         this.appService.checkParity(number),
         this.appService.checkPrime(number),
         this.appService.calculateFactorial(number),
         this.appService.calculateSumN(number),
         this.appService.calculateFibonacci(number),
+        this.appService.calculateFactors(number),
       ]);
 
     return {
@@ -67,6 +78,7 @@ export class AppController {
       factorial,
       sumN,
       fibonacci,
+      factors,
     };
   }
 }

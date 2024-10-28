@@ -63,6 +63,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/fibonacci/tsconfig.app.json"
       }
+    },
+    "factors": {
+      "type": "application",
+      "root": "apps/factors",
+      "entryFile": "main",
+      "sourceRoot": "apps/factors/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/factors/tsconfig.app.json"
+      }
     }
   }
 }

@@ -10,6 +10,7 @@ export class AppService {
     @Inject('FACTORIAL_SERVICE') private readonly factorialClient: ClientProxy, // Agregado
     @Inject('SUMN_SERVICE') private readonly sumNClient: ClientProxy,
     @Inject('FIBONACCI_SERVICE') private readonly fibonacciClient: ClientProxy,
+    @Inject('FACTORS_SERVICE') private readonly factorsClient: ClientProxy,
   ) {}
 
   // Método  para verificar la paridad
@@ -46,6 +47,12 @@ export class AppService {
   async calculateFibonacci(number: number): Promise<number> {
     return firstValueFrom(
       this.fibonacciClient.send<number, number>('fibonacci_calculate', number),
+    );
+  }
+
+  async calculateFactors(number: number): Promise<number[]> {
+    return firstValueFrom(
+      this.factorsClient.send<number[], number>('factors_calculate', number),
     );
   }
 }
