@@ -78,3 +78,16 @@ services:
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
     ports:
       - "3004:3004"
+
+  fibonacci:
+    build:
+      context: .
+      dockerfile: ./apps/fibonacci/Dockerfile
+    container_name: fibonacci
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
+    ports:
+      - "3005:3005"

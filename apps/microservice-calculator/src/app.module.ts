@@ -56,6 +56,17 @@ import { AppService } from './app.service';
           queueOptions: { durable: false },
         },
       },
+      {
+        name: 'FIBONACCI_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: [
+            process.env.RABBITMQ_URL || 'amqp://guest:guest@rabbitmq:5672',
+          ],
+          queue: 'fibonacci_queue',
+          queueOptions: { durable: false },
+        },
+      },
     ]),
   ],
   controllers: [AppController],

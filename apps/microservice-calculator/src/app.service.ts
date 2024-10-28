@@ -9,6 +9,7 @@ export class AppService {
     @Inject('PRIME_SERVICE') private readonly primeClient: ClientProxy, // Agregado
     @Inject('FACTORIAL_SERVICE') private readonly factorialClient: ClientProxy, // Agregado
     @Inject('SUMN_SERVICE') private readonly sumNClient: ClientProxy,
+    @Inject('FIBONACCI_SERVICE') private readonly fibonacciClient: ClientProxy,
   ) {}
 
   // Método  para verificar la paridad
@@ -39,6 +40,12 @@ export class AppService {
   async calculateSumN(number: number): Promise<number> {
     return firstValueFrom(
       this.sumNClient.send<number, number>('sumN_calculate', number),
+    );
+  }
+
+  async calculateFibonacci(number: number): Promise<number> {
+    return firstValueFrom(
+      this.fibonacciClient.send<number, number>('fibonacci_calculate', number),
     );
   }
 }

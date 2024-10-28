@@ -34,6 +34,13 @@ export class AppController {
     const sumN = await this.appService.calculateSumN(data.number);
     return { sumN }; // Devolvemos el resultado en un objeto
   }
+  @Post('fibonacci')
+  async checkFibonacci(
+    @Body() data: { number: number },
+  ): Promise<{ fibonacci: number }> {
+    const fibonacci = await this.appService.calculateFibonacci(data.number);
+    return { fibonacci }; // Devolvemos el resultado en un objeto
+  }
 
   @Post('calculate')
   async calculate(@Body() data: { number: number }): Promise<{
@@ -41,21 +48,25 @@ export class AppController {
     isPrime: boolean;
     factorial: number;
     sumN: number;
+    fibonacci: number;
   }> {
     const { number } = data;
 
-    const [parityResult, primeResult, factorial, sumN] = await Promise.all([
-      this.appService.checkParity(number),
-      this.appService.checkPrime(number),
-      this.appService.calculateFactorial(number),
-      this.appService.calculateSumN(number),
-    ]);
+    const [parityResult, primeResult, factorial, sumN, fibonacci] =
+      await Promise.all([
+        this.appService.checkParity(number),
+        this.appService.checkPrime(number),
+        this.appService.calculateFactorial(number),
+        this.appService.calculateSumN(number),
+        this.appService.calculateFibonacci(number),
+      ]);
 
     return {
       ...parityResult,
       ...primeResult,
       factorial,
       sumN,
+      fibonacci,
     };
   }
 }

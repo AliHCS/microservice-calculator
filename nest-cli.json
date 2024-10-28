@@ -54,6 +54,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/sum-n/tsconfig.app.json"
       }
+    },
+    "fibonacci": {
+      "type": "application",
+      "root": "apps/fibonacci",
+      "entryFile": "main",
+      "sourceRoot": "apps/fibonacci/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/fibonacci/tsconfig.app.json"
+      }
     }
   }
 }
