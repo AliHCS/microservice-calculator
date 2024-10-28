@@ -6,33 +6,44 @@ Este proyecto implementa varios microservicios utilizando **NestJS** en un entor
 
 Asegúrate de tener los siguientes programas instalados en tu máquina:
 
-- **Git** - Para clonar el proyecto.
-- **Node.js** - Instalación recomendada: LTS (Long-Term Support).
-- **Docker y Docker Compose** - Para ejecutar RabbitMQ, la aplicación principal y los microservicios en contenedores.
-- **Postman** - Herramienta para probar la API REST.
+- **Git** – Para clonar el proyecto.
+- **Node.js** – Instalación recomendada: LTS (Long-Term Support).
+- **Docker y Docker Compose** – Para ejecutar RabbitMQ y los microservicios en contenedores.
 
 ## Instrucciones de Instalación
 
-### 1. Clonar el Repositorio
+### Paso 1: Descargar el Proyecto
+
+Clona el repositorio y entra al directorio del proyecto:
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
 cd <nombre_del_proyecto>
 ```
 
-### 2. Instalar Dependencias
+### Paso 2: Instalar las Dependencias
+
+Instala las dependencias utilizando **npm**, **yarn** o **pnpm**:
 
 ```bash
 npm install
 ```
 
-### 3. Configurar Variables de Entorno
+Si prefieres **yarn**:
 
 ```bash
-echo "RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672" > .env
+yarn install
 ```
 
-### 4. Levantar con Docker Compose
+Si prefieres **pnpm**:
+
+```bash
+pnpm install
+```
+
+### Paso 3: Levantar RabbitMQ con Docker
+
+Asegúrate de tener **Docker** corriendo y luego ejecuta:
 
 ```bash
 docker-compose up -d
@@ -40,19 +51,23 @@ docker-compose up -d
 
 Este comando:
 
-- Levanta **RabbitMQ** en segundo plano.
-- Ejecuta la **aplicación principal** junto con los **microservicios** automáticamente.
+- Levanta **RabbitMQ** y lo deja corriendo en segundo plano.
+- Levanta todos los microservicios automáticamente.
 
-Puedes verificar si **RabbitMQ** está funcionando correctamente accediendo a:
+Puedes verificar si RabbitMQ está funcionando correctamente accediendo a:
 
 ```
 http://localhost:15672
 ```
 
-- Usuario: `guest`
-- Contraseña: `guest`
+- **Usuario:** `guest`
+- **Contraseña:** `guest`
 
-### 5. Prueba de la API con Postman
+### Paso 4: Prueba de la API con Postman
+
+Usa **Postman** para probar la API REST.
+
+#### Ejemplo de Solicitud:
 
 - **Método:** `POST`
 - **URL:** `http://localhost:3000/calculate`
@@ -74,67 +89,13 @@ http://localhost:15672
 }
 ```
 
-## Estructura del Proyecto
-
-```
-<nombre_del_proyecto>/
-│
-├── apps/
-│   ├── fibonacci/
-│   ├── factorial/
-│   ├── prime/
-│   ├── sumN/
-│   ├── factors/
-├── docker-compose.yml
-├── package.json
-├── .env
-└── README.md
-```
-
-## Comandos Útiles
-
-- **Reiniciar RabbitMQ**:
-
-  ```bash
-  docker-compose restart
-  ```
-
-- **Ver Logs de RabbitMQ**:
-
-  ```bash
-  docker-compose logs -f rabbitmq
-  ```
-
-- **Parar todos los servicios**:
-  ```bash
-  docker-compose down
-  ```
-
 ## Tecnologías Utilizadas
 
-- **NestJS** - Framework de backend escalable.
-- **RabbitMQ** - Sistema de mensajería.
-- **Docker** - Contenedorización de servicios.
-- **TypeScript** - Lenguaje de desarrollo.
-- **Postman** - Pruebas API REST.
-
-## Contribuciones
-
-1. Hacer un **fork** del repositorio.
-2. Crear una nueva rama:
-   ```bash
-   git checkout -b nueva-funcionalidad
-   ```
-3. Realizar cambios y hacer un **commit**:
-   ```bash
-   git commit -m "Descripción de los cambios"
-   ```
-4. Hacer **push**:
-   ```bash
-   git push origin nueva-funcionalidad
-   ```
-5. Crear un **pull request**.
+- **NestJS** – Framework para construir aplicaciones de backend escalables.
+- **RabbitMQ** – Sistema de mensajería para la comunicación entre microservicios.
+- **Docker** – Contenedorización de los servicios.
+- **TypeScript** – Lenguaje utilizado para el desarrollo del proyecto.
 
 ## Licencia
 
-Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT).
+Este proyecto está bajo la licencia MIT.
