@@ -79,7 +79,7 @@ Usa **Postman** para probar la API REST.
   "isPrime": true,
   "factorial": 120,
   "sumN": 15,
-  "fibonacci": [0, 1, 1, 2, 3, 5],
+  "fibonacci": 5,
   "factors": [1, 5]
 }
 ```
