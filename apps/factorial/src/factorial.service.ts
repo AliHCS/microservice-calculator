@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
 
 @Injectable()
 export class FactorialService {
-  // Escuchar mensajes con el patrón 'factorial_calculate'
-  @MessagePattern('factorial_calculate')
   calculateFactorial(number: number): number {
     // Validar si el número es un entero positivo
     if (number == null || number < 0) {
