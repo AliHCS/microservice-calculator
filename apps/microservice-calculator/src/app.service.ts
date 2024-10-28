@@ -8,6 +8,7 @@ export class AppService {
     @Inject('PARITY_SERVICE') private readonly parityClient: ClientProxy,
     @Inject('PRIME_SERVICE') private readonly primeClient: ClientProxy, // Agregado
     @Inject('FACTORIAL_SERVICE') private readonly factorialClient: ClientProxy, // Agregado
+    @Inject('SUMN_SERVICE') private readonly sumNClient: ClientProxy,
   ) {}
 
   // Método  para verificar la paridad
@@ -33,5 +34,11 @@ export class AppService {
       this.factorialClient.send<number, number>('factorial_check', number),
     );
     return factorial; // Devolvemos en formato de objeto
+  }
+
+  async calculateSumN(number: number): Promise<number> {
+    return firstValueFrom(
+      this.sumNClient.send<number, number>('sumN_calculate', number),
+    );
   }
 }

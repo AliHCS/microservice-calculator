@@ -65,3 +65,16 @@ services:
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
     ports:
       - "3003:3003"
+
+  sum-n:
+    build:
+      context: .
+      dockerfile: ./apps/sum-n/Dockerfile
+    container_name: sum-n
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
+    ports:
+      - "3004:3004"

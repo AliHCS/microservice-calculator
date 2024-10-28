@@ -45,6 +45,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/factorial/tsconfig.app.json"
       }
+    },
+    "sum-n": {
+      "type": "application",
+      "root": "apps/sum-n",
+      "entryFile": "main",
+      "sourceRoot": "apps/sum-n/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/sum-n/tsconfig.app.json"
+      }
     }
   }
 }

@@ -29,22 +29,33 @@ export class AppController {
     return { factorial }; // Devolvemos el objeto tal como lo recibimos
   }
 
+  @Post('sumN')
+  async checkSumN(@Body() data: { number: number }): Promise<{ sumN: number }> {
+    const sumN = await this.appService.calculateSumN(data.number);
+    return { sumN }; // Devolvemos el resultado en un objeto
+  }
+
   @Post('calculate')
-  async calculate(
-    @Body() data: { number: number },
-  ): Promise<{ isPair: boolean; isPrime: boolean; factorial: number }> {
+  async calculate(@Body() data: { number: number }): Promise<{
+    isPair: boolean;
+    isPrime: boolean;
+    factorial: number;
+    sumN: number;
+  }> {
     const { number } = data;
 
-    const [parityResult, primeResult, factorial] = await Promise.all([
+    const [parityResult, primeResult, factorial, sumN] = await Promise.all([
       this.appService.checkParity(number),
       this.appService.checkPrime(number),
       this.appService.calculateFactorial(number),
+      this.appService.calculateSumN(number),
     ]);
 
     return {
       ...parityResult,
       ...primeResult,
       factorial,
+      sumN,
     };
   }
 }

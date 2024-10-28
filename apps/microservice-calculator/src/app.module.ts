@@ -45,6 +45,17 @@ import { AppService } from './app.service';
           },
         },
       },
+      {
+        name: 'SUMN_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: [
+            process.env.RABBITMQ_URL || 'amqp://guest:guest@rabbitmq:5672',
+          ],
+          queue: 'sumN_queue',
+          queueOptions: { durable: false },
+        },
+      },
     ]),
   ],
   controllers: [AppController],
